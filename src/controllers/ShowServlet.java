@@ -41,7 +41,7 @@ public class ShowServlet extends HttpServlet {
         // データをリクエストスコープにセットしてshow.jspを呼び出す
         request.setAttribute("cloth", c);
 
-        RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/clothes/show.jsp");
+        RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/display/show.jsp");
         rd.forward(request, response);
     }
 }
