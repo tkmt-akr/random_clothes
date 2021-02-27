@@ -12,8 +12,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import models.Message;
-import models.validators.MessageValidator;
+import models.Cloth;
+import models.validators.ClothValidator;
 import utils.DBUtil;
 
 /**
@@ -39,34 +39,28 @@ public class CreateServlet extends HttpServlet {
             EntityManager em = DBUtil.createEntityManager();
             em.getTransaction().begin();
 
-            Message m = new Message();
-
-            String title = request.getParameter("title");
-            m.setTitle(title);
-
-            String content = request.getParameter("content");
-            m.setContent(content);
+            Cloth c = new Cloth();
 
             Timestamp currentTime = new Timestamp(System.currentTimeMillis());
-            m.setCreated_at(currentTime);
-            m.setUpdated_at(currentTime);
+            c.setCreated_at(currentTime);
+            c.setUpdated_at(currentTime);
 
          // バリデーションを実行してエラーがあったら新規登録のフォームに戻る
-            List<String> errors = MessageValidator.validate(m);
+            List<String> errors = ClothValidator.validate(c);
             if(errors.size() > 0) {
                 em.close();
 
                 // フォームに初期値を設定、さらにエラーメッセージを送る
                 request.setAttribute("_token", request.getSession().getId());
-                request.setAttribute("message", m);
+                request.setAttribute("cloth", c);
                 request.setAttribute("errors", errors);
 
-                RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/messages/new.jsp");
+                RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/display/new.jsp");
                 rd.forward(request, response);
             } else {
                 // データベースに保存
                 em.getTransaction().begin();
-                em.persist(m);
+                em.persist(c);
                 em.getTransaction().commit();
                 request.getSession().setAttribute("flush", "登録が完了しました。");
                 em.close();
