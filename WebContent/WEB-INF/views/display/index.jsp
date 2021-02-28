@@ -9,7 +9,7 @@
         </c:if>
         <h2>服装一覧</h2>
         <ul>
-            <c:forEach var="clothes" items="${clothes}">
+            <c:forEach var="cloth" items="${clothes}">
                 <li>
                     <a href="${pageContext.request.contextPath}/show?id=${cloth.id}">
                         <c:out value="${cloth.id}" />
