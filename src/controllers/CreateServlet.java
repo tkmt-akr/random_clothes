@@ -37,6 +37,29 @@ public class CreateServlet extends HttpServlet {
 
             Cloth c = new Cloth();
 
+            String title = request.getParameter("title");
+            c.setTitle(title);
+
+            //  ランダム処理
+            String[] hat = {"赤", "青", "黄", "茶", "緑", "黒", "白"};
+            String h = hat[(int)(Math.random() * 7)];
+            c.setHat(h);
+            String[] tops = {"赤", "青", "黄", "茶", "緑", "黒", "白"};
+            String t = tops[(int)(Math.random() * 7)];
+            c.setTops(t);
+            String[] outerWear = {"赤", "青", "黄", "茶", "緑", "黒", "白"};
+            String o = outerWear[(int)(Math.random() * 7)];
+            c.setOuterWear(o);
+            String[] pants = {"赤", "青", "黄", "茶", "緑", "黒", "白"};
+            String p = pants[(int)(Math.random() * 7)];
+            c.setPants(p);
+            String[] socks = {"赤", "青", "黄", "茶", "緑", "黒", "白"};
+            String so = socks[(int)(Math.random() * 7)];
+            c.setSocks(so);
+            String[] shoes = {"赤", "青", "黄", "茶", "緑", "黒", "白"};
+            String s = shoes[(int)(Math.random() * 7)];
+            c.setShoes(s);
+
             Timestamp currentTime = new Timestamp(System.currentTimeMillis());
             c.setCreated_at(currentTime);
             c.setUpdated_at(currentTime);

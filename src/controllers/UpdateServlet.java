@@ -42,6 +42,9 @@ public class UpdateServlet extends HttpServlet {
             Cloth c = em.find(Cloth.class, (Integer)(request.getSession().getAttribute("cloth_id")));
 
             // フォームの内容を各フィールドに上書き
+            String title = request.getParameter("title");
+            c.setTitle(title);
+
             Timestamp currentTime = new Timestamp(System.currentTimeMillis());
             c.setUpdated_at(currentTime);       // 更新日時のみ上書き
 

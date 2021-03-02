@@ -29,6 +29,27 @@ public class Cloth {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
+    @Column(name = "title", length = 255, nullable = true)
+    private String title;
+
+    @Column(name = "hat", length = 255, nullable = false)
+    private String hat;
+
+    @Column(name = "tops", length = 255, nullable = false)
+    private String tops;
+
+    @Column(name = "outerWear", length = 255, nullable = false)
+    private String outerWear;
+
+    @Column(name = "pants", length = 255, nullable = false)
+    private String pants;
+
+    @Column(name = "socks", length = 255, nullable = false)
+    private String socks;
+
+    @Column(name = "shoes", length = 255, nullable = false)
+    private String shoes;
+
     @Column(name = "created_at", nullable = false)
     private Timestamp created_at;
 
@@ -41,6 +62,63 @@ public class Cloth {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getHat() {
+        return hat;
+    }
+
+    public void setHat(String hat) {
+        this.hat = hat;
+    }
+
+    public String getTops() {
+        return tops;
+    }
+
+    public void setTops(String tops) {
+        this.tops = tops;
+    }
+
+    public String getOuterWear() {
+        return outerWear;
+    }
+
+    public void setOuterWear(String outerWear) {
+        this.outerWear = outerWear;
+    }
+
+    public String getPants() {
+        return pants;
+    }
+
+    public void setPants(String pants) {
+        this.pants = pants;
+    }
+
+
+    public String getSocks() {
+        return socks;
+    }
+
+    public void setSocks(String socks) {
+        this.socks = socks;
+    }
+
+    public String getShoes() {
+        return shoes;
+    }
+
+    public void setShoes(String shoes) {
+        this.shoes = shoes;
     }
 
     public Timestamp getCreated_at() {
